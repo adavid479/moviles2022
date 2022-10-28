@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/txtIdProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="id:000"
+        android:textSize="24dp"/>
+
+    <TextView
+        android:id="@+id/txtNameProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txtIdProduct"
+        app:layout_constraintStart_toEndOf="@id/txtIdProduct"
+        android:text="nombre producto"
+        android:textSize="24dp"
+        android:layout_marginLeft="24dp"/>
+
+    <TextView
+        android:id="@+id/txtPriceProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txtIdProduct"
+        app:layout_constraintStart_toEndOf="@id/txtNameProduct"
+        android:text="$0000"
+        android:textSize="24dp"
+        android:layout_marginLeft="24dp"/>
+
+    <TextView
+        android:id="@+id/txtQuantityProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtIdProduct"
+        app:layout_constraintStart_toStartOf="@id/txtIdProduct"
+        android:text="cantidad: 000"
+        android:textSize="24dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/txtSubProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtIdProduct"
+        app:layout_constraintStart_toEndOf="@id/txtQuantityProduct"
+        android:text="sub: $0000"
+        android:textSize="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        app:layout_constraintTop_toBottomOf="@id/txtIdProduct"
+        app:layout_constraintStart_toEndOf="@id/txtSubProduct"
+        android:src="@drawable/delete"
+        android:layout_marginLeft="24dp"
+        android:background="@color/secondary_logo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

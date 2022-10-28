@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Registro de usuario"
+        android:layout_marginTop="20dp"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/txtVUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+        android:layout_marginTop="20dp"
+        android:text="@string/user"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/txtUser"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtVUser"
+        app:layout_constraintStart_toStartOf="@+id/txtTitle"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txtVPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtUser"
+        android:layout_marginTop="20dp"
+        android:text="@string/password"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtVPassword"
+        app:layout_constraintStart_toStartOf="@+id/txtTitle"
+        android:textSize="20dp"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/txtVName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtPassword"
+        android:layout_marginTop="20dp"
+        android:text="Nombre"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtVName"
+        app:layout_constraintStart_toStartOf="@+id/txtTitle"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txtVEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtName"
+        android:layout_marginTop="20dp"
+        android:text="@string/email"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtVEmail"
+        app:layout_constraintStart_toStartOf="@+id/txtTitle"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/btnReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtEmail"
+        android:layout_marginTop="20dp"
+        android:text="REGISTRAR USUARIO"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnReg"
+        android:layout_marginTop="20dp"
+        android:text="VOLVER AL LOGIN"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Tecnologias Moviles</string>
+    <string name = "user">Usuario</string>
+    <string name = "password">Contraseña</string>
+    <string name = "welcome">Bienvenido usuario</string>
+    <string name = "product_list">Product List</string>
+    <string name = "id_product">ID Producto</string>
+    <string name = "name_product">Nombre Producto</string>
+    <string name = "price_product">Precio Producto</string>
+    <string name = "test_acelerometer">Test Acelerometer</string>
+    <string name="exists_acelerometer">Exists Acelerometer</string>
+    <string name = "start">INICIAR</string>
+    <string name="password_recovery">Recuperar contraseña</string>
+    <string name="enter">ENTRAR</string>
+    <string name="email">E-Mail</string>
+</resources>
