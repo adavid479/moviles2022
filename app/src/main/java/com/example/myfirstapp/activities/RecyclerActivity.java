@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myfirstapp.persistence.MovilesDataBase;
 import com.example.myfirstapp.utils.ListAdapter;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.model.Product;
@@ -21,13 +22,16 @@ import java.util.List;
 public class RecyclerActivity extends AppCompatActivity {
 
     private List<Product> products;
+    MovilesDataBase movilesDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
-        initProducts();
+        movilesDataBase = new MovilesDataBase(getApplicationContext());
+        products = movilesDataBase.getProducts();
+
         ListAdapter listAdapter = new ListAdapter(products);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
