@@ -61,4 +61,8 @@ public class PreferencesUtils {
         return sharedPreferences.getAll();
     }
 
+    public void deleteProductCart(String idProduct){
+        sharedPreferences.edit().remove(idProduct);
+    }
+
 }

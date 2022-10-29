@@ -12,15 +12,16 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
         android:text="id:000"
-        android:textSize="24dp"/>
+        android:textSize="24dp"
+        android:layout_marginLeft="20dp"/>
 
     <TextView
         android:id="@+id/txtNameProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="280px"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/txtIdProduct"
         app:layout_constraintStart_toEndOf="@id/txtIdProduct"
-        android:text="nombre producto"
+        android:text="nombre p"
         android:textSize="24dp"
         android:layout_marginLeft="24dp"/>
 
@@ -59,7 +60,8 @@
         android:id="@+id/btnDelete"
         android:layout_width="150px"
         android:layout_height="150px"
-        app:layout_constraintTop_toBottomOf="@id/txtIdProduct"
+        app:layout_constraintTop_toTopOf="@id/txtIdProduct"
+        app:layout_constraintBottom_toBottomOf="@id/txtSubProduct"
         app:layout_constraintStart_toEndOf="@id/txtSubProduct"
         android:src="@drawable/delete"
         android:layout_marginLeft="24dp"
