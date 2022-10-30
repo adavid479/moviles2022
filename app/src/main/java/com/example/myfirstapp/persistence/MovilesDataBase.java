@@ -57,4 +57,18 @@ public class MovilesDataBase extends SQLiteOpenHelper {
         }
         return products;
     }
+
+    public Product getProduct(String idProduct){
+        Product product = null;
+        SQLiteDatabase database = this.getReadableDatabase();
+        String[] selectionArgs = {idProduct};
+        Cursor cursor = database.rawQuery("SELECT * FROM Product WHERE idProduct = ?", selectionArgs);
+        while(cursor.moveToNext()){
+            product = new Product();
+            product.setId(cursor.getString(0));
+            product.setName(cursor.getString(1));
+            product.setPrice(cursor.getDouble(2));
+        }
+        return product;
+    }
 }

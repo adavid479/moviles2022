@@ -6,30 +6,32 @@
 
     <TextView
         android:id="@+id/txtIdProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
         android:text="id:000"
         android:textSize="24dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/txtNameProduct"
-        android:layout_width="280px"
+        android:layout_width="440px"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/txtIdProduct"
-        app:layout_constraintStart_toEndOf="@id/txtIdProduct"
-        android:text="nombre p"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="nombre produc"
         android:textSize="24dp"
         android:layout_marginLeft="24dp"/>
 
     <TextView
         android:id="@+id/txtPriceProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="280px"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/txtIdProduct"
+        app:layout_constraintTop_toTopOf="@id/txtNameProduct"
         app:layout_constraintStart_toEndOf="@id/txtNameProduct"
         android:text="$0000"
         android:textSize="24dp"
@@ -37,19 +39,19 @@
 
     <TextView
         android:id="@+id/txtQuantityProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="300px"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtIdProduct"
-        app:layout_constraintStart_toStartOf="@id/txtIdProduct"
-        android:text="cantidad: 000"
+        app:layout_constraintTop_toBottomOf="@id/txtNameProduct"
+        app:layout_constraintStart_toStartOf="@id/txtNameProduct"
+        android:text="cant.: 000"
         android:textSize="24dp"
         android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/txtSubProduct"
-        android:layout_width="wrap_content"
+        android:layout_width="420px"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtIdProduct"
+        app:layout_constraintTop_toBottomOf="@id/txtNameProduct"
         app:layout_constraintStart_toEndOf="@id/txtQuantityProduct"
         android:text="sub: $0000"
         android:textSize="24dp"

@@ -37,7 +37,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartPalleteViewHolder>
         holder.getTxtIdProduct().setText("id:" + cartProduct.getProduct().getId());
         holder.getTxtNameProduct().setText(cartProduct.getProduct().getName());
         holder.getTxtPriceProduct().setText("$" + cartProduct.getProduct().getPrice().toString());
-        holder.getTxtQuantityProduct().setText("cantidad: " + cartProduct.getQuantity().toString());
+        holder.getTxtQuantityProduct().setText("cant.: " + cartProduct.getQuantity().toString());
         holder.getTxtSubProduct().setText("sub: $" + sub.toString());
         holder.getBtnDelete().setOnClickListener(new View.OnClickListener() {
             @Override
