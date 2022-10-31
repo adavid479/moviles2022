@@ -1,6 +1,8 @@
 package com.example.myfirstapp.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -8,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.model.Buy;
 import com.example.myfirstapp.model.CartProduct;
 import com.example.myfirstapp.model.Product;
+import com.example.myfirstapp.persistence.BuyDAO;
 import com.example.myfirstapp.persistence.MovilesDataBase;
 import com.example.myfirstapp.utils.CartListAdapter;
 import com.example.myfirstapp.utils.PreferencesUtils;
@@ -38,6 +42,23 @@ public class CartActivity extends AppCompatActivity {
         recyclerCart.setAdapter(cartListAdapter);
         recyclerCart.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
+        Button btnBuy = findViewById(R.id.btnBuy);
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Buy buy = new Buy();
+                buy.setIdBuy("1");
+                buy.setIdDate("");
+                buy.setDiscount(2.0);
+                buy.setTotal(200.0);
+
+                movilesDataBase.addBuy(buy);
+
+                for(Buy b: movilesDataBase.getBuys()){
+                    System.out.println(b.getIdBuy() + " " + b.getDiscount() + " " + b.getTotal());
+                }
+            }
+        });
 
     }
 
