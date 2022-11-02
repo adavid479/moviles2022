@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         Button btnAcelerometer = findViewById(R.id.btnAcelerometer);
         ImageButton btnUser = findViewById(R.id.btnUser);
         Button btnAddProduct = findViewById(R.id.btnAddProduct);
+        Button btnBuys = findViewById(R.id.btnBuys);
 
         btnRecycler.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,6 +65,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent addProductIntent = new Intent(HomeActivity.this, AddProductActivity.class);
                 startActivity(addProductIntent);
+            }
+        });
+
+        btnBuys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent buysIntent = new Intent(HomeActivity.this, BuysActivity.class);
+                startActivity(buysIntent);
             }
         });
     }

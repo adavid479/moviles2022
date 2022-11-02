@@ -1,16 +1,16 @@
 package com.example.myfirstapp.model;
 
 public class Buy {
-    private String idBuy;
+    private Integer idBuy;
     private String idDate;
     private Double discount;
     private Double total;
 
-    public String getIdBuy() {
+    public Integer getIdBuy() {
         return idBuy;
     }
 
-    public void setIdBuy(String idBuy) {
+    public void setIdBuy(Integer idBuy) {
         this.idBuy = idBuy;
     }
 

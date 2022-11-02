@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.myfirstapp.model.Buy;
+import com.example.myfirstapp.model.DetailBuy;
 import com.example.myfirstapp.model.Product;
 
 import java.util.ArrayList;
@@ -88,8 +89,8 @@ public class MovilesDataBase extends SQLiteOpenHelper {
 
     public void addBuy(Buy buy){
         SQLiteDatabase database = this.getWritableDatabase();
-        String[] selectionArgs = {buy.getIdDate(), buy.getDiscount().toString(), buy.getTotal().toString()};
-        database.execSQL("INSERT INTO Buy (idDate, discount, total)VALUES(?, ?, ?)", selectionArgs);
+        String[] selectionArgs = {buy.getDiscount().toString(), buy.getTotal().toString()};
+        database.execSQL("INSERT INTO Buy (idDate, discount, total)VALUES(CURRENT_DATE, ?, ?)", selectionArgs);
     }
 
     public List<Buy> getBuys(){
@@ -98,7 +99,7 @@ public class MovilesDataBase extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery("SELECT * FROM Buy", null);
         while(cursor.moveToNext()){
             Buy buy = new Buy();
-            buy.setIdBuy(cursor.getString(0));
+            buy.setIdBuy(cursor.getInt(0));
             buy.setIdDate(cursor.getString(1));
             buy.setDiscount(cursor.getDouble(2));
             buy.setTotal(cursor.getDouble(3));
@@ -107,12 +108,64 @@ public class MovilesDataBase extends SQLiteOpenHelper {
         return buys;
     }
 
+    public Buy getBuy(Integer idBuy){
+        SQLiteDatabase database = this.getReadableDatabase();
+        String[] selectionArgs = {idBuy.toString()};
+        Cursor cursor = database.rawQuery("SELECT * FROM Buy WHERE idBuy = ?", selectionArgs);
+        while (cursor.moveToNext()){
+            Buy buy = new Buy();
+            buy.setIdBuy(cursor.getInt(0));
+            buy.setIdDate(cursor.getString(1));
+            buy.setDiscount(cursor.getDouble(2));
+            buy.setTotal(cursor.getDouble(3));
+            return buy;
+        }
+        return null;
+    }
+
+    public void addDetailBuy(DetailBuy detailBuy){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String[] bindArgs = {detailBuy.getBuy().getIdBuy().toString(), detailBuy.getProduct().getId(), detailBuy.getQuantity().toString()};
+        database.execSQL("INSERT INTO DetailBuy VALUES(?, ? ,?)", bindArgs);
+    }
+
+    public Integer getLastIdBuy(){
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT MAX(idBuy) FROM Buy", null);
+        while(cursor.moveToNext()){
+            return cursor.getInt(0);
+        }
+        return null;
+    }
+
+    public void updateBuy(Buy buy){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String[] bindArgs = {buy.getIdBuy().toString(), buy.getDiscount().toString(), buy.getTotal().toString()};
+        database.execSQL("UPDATE Buy SET discount = ?, total = ? WHERE idBuy = ?", bindArgs);
+    }
+
+    public List<DetailBuy> getDetailBuys(){
+        SQLiteDatabase database = this.getReadableDatabase();
+        List<DetailBuy> detailBuys = new ArrayList<DetailBuy>();
+        Cursor cursor = database.rawQuery("SELECT * FROM DetailBuy", null);
+        while(cursor.moveToNext()){
+            DetailBuy detailBuy = new DetailBuy();
+            detailBuy.setBuy(getBuy(cursor.getInt(0)));
+            detailBuy.setProduct(getProduct(cursor.getString(1)));
+            detailBuy.setQuantity(cursor.getInt(2));
+            detailBuys.add(detailBuy);
+        }
+        return detailBuys;
+    }
+
     public void upgrade(){
-        //this.getWritableDatabase().execSQL("DROP TABLE Buy");
-        this.getWritableDatabase().execSQL("CREATE TABLE Buy(" +
-                "idBuy INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "idDate DATE, " +
-                "discount DOUBLE, " +
-                "total DOUBLE)");
+        this.getWritableDatabase().execSQL("DROP TABLE DetailBuy");
+        this.getWritableDatabase().execSQL("CREATE TABLE DetailBuy(" +
+                "idBuy INTEGER, " +
+                "idProduct TEXT, " +
+                "quantity INTEGER, " +
+                "PRIMARY KEY(idBuy, idProduct), " +
+                "FOREIGN KEY(idBuy) REFERENCES Buy(idBuy), " +
+                "FOREIGN KEY(idProduct) REFERENCES Product(idProduct))");
     }
 }

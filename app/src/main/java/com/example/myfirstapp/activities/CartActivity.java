@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.model.Buy;
 import com.example.myfirstapp.model.CartProduct;
+import com.example.myfirstapp.model.DetailBuy;
 import com.example.myfirstapp.model.Product;
 import com.example.myfirstapp.persistence.BuyDAO;
 import com.example.myfirstapp.persistence.MovilesDataBase;
@@ -46,17 +47,37 @@ public class CartActivity extends AppCompatActivity {
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Buy buy = new Buy();
-                buy.setIdBuy("1");
-                buy.setIdDate("");
-                buy.setDiscount(2.0);
-                buy.setTotal(200.0);
+                double total = 0;
 
+                Buy buy = new Buy();
+                buy.setIdDate("");
+                buy.setDiscount(0.0);
+                buy.setTotal(0.0);
                 movilesDataBase.addBuy(buy);
+                buy.setIdBuy(movilesDataBase.getLastIdBuy());
+
+                //movilesDataBase.upgrade();
+
+                for(CartProduct cp: cartProducts){
+                    DetailBuy detailBuy = new DetailBuy();
+                    detailBuy.setBuy(buy);
+                    detailBuy.setProduct(cp.getProduct());
+                    detailBuy.setQuantity(cp.getQuantity());
+                    total += cp.getProduct().getPrice();
+                    movilesDataBase.addDetailBuy(detailBuy);
+                }
+
+                buy.setTotal(total);
+                buy.setIdBuy(movilesDataBase.getLastIdBuy());
+                movilesDataBase.updateBuy(buy);
 
                 for(Buy b: movilesDataBase.getBuys()){
-                    System.out.println(b.getIdBuy() + " " + b.getDiscount() + " " + b.getTotal());
+                    System.out.println(b.getIdBuy() + " " + b.getIdDate() + " " + b.getDiscount() + " " + b.getTotal());
                 }
+                for(DetailBuy db: movilesDataBase.getDetailBuys()){
+                    System.out.println(db.getBuy().getIdBuy() + " " + db.getProduct().getName() + " " + db.getQuantity());
+                }
+                System.out.println(movilesDataBase.getLastIdBuy());
             }
         });
 

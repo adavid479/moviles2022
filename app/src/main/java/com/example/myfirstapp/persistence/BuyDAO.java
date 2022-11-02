@@ -22,7 +22,7 @@ public class BuyDAO {
     }
 
     public void addBuy(Buy buy){
-        String[] selectionArgs = {buy.getIdBuy(), buy.getIdDate(), buy.getDiscount().toString(), buy.getTotal().toString()};
+        String[] selectionArgs = {buy.getIdBuy().toString(), buy.getIdDate(), buy.getDiscount().toString(), buy.getTotal().toString()};
         databaseW.rawQuery("INSERT INTO Buy VALUES(?, ?, ?, ?)", selectionArgs);
     }
 
@@ -31,7 +31,7 @@ public class BuyDAO {
         Cursor cursor = databaseR.rawQuery("SELECT * FROM Buy", null);
         while(cursor.moveToNext()){
             Buy buy = new Buy();
-            buy.setIdBuy(cursor.getString(0));
+            buy.setIdBuy(cursor.getInt(0));
             buy.setIdDate(cursor.getString(1));
             buy.setDiscount(cursor.getDouble(2));
             buy.setTotal(cursor.getDouble(3));
