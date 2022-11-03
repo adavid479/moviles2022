@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/activity_recycler.xml" value="0.18" />
         <entry key="app/src/main/res/layout/view_buy.xml" value="0.18" />
         <entry key="app/src/main/res/layout/view_cart.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/view_detail_buy.xml" value="0.18" />
         <entry key="app/src/main/res/layout/view_product.xml" value="0.1" />
       </map>
     </option>

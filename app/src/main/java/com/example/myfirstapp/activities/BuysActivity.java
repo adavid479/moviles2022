@@ -3,6 +3,7 @@ package com.example.myfirstapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -31,8 +32,9 @@ public class BuysActivity extends AppCompatActivity {
         buyListAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("hola");
                 Intent detailBuyIntent = new Intent(BuysActivity.this, DetailBuyActivity.class);
+                TextView txtId = view.findViewById(R.id.txtId);
+                detailBuyIntent.putExtra("idBuy", txtId.getText().toString());
                 startActivity(detailBuyIntent);
             }
         });

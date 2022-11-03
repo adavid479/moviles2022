@@ -140,7 +140,7 @@ public class MovilesDataBase extends SQLiteOpenHelper {
 
     public void updateBuy(Buy buy){
         SQLiteDatabase database = this.getWritableDatabase();
-        String[] bindArgs = {buy.getIdBuy().toString(), buy.getDiscount().toString(), buy.getTotal().toString()};
+        String[] bindArgs = {buy.getDiscount().toString(), buy.getTotal().toString(), buy.getIdBuy().toString()};
         database.execSQL("UPDATE Buy SET discount = ?, total = ? WHERE idBuy = ?", bindArgs);
     }
 
@@ -148,6 +148,21 @@ public class MovilesDataBase extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
         List<DetailBuy> detailBuys = new ArrayList<DetailBuy>();
         Cursor cursor = database.rawQuery("SELECT * FROM DetailBuy", null);
+        while(cursor.moveToNext()){
+            DetailBuy detailBuy = new DetailBuy();
+            detailBuy.setBuy(getBuy(cursor.getInt(0)));
+            detailBuy.setProduct(getProduct(cursor.getString(1)));
+            detailBuy.setQuantity(cursor.getInt(2));
+            detailBuys.add(detailBuy);
+        }
+        return detailBuys;
+    }
+
+    public List<DetailBuy> getDetailBuys(String idBuy){
+        SQLiteDatabase database = this.getReadableDatabase();
+        List<DetailBuy> detailBuys = new ArrayList<DetailBuy>();
+        String[] selectionArgs = {idBuy};
+        Cursor cursor = database.rawQuery("SELECT * FROM DetailBuy WHERE idBuy = ?", selectionArgs);
         while(cursor.moveToNext()){
             DetailBuy detailBuy = new DetailBuy();
             detailBuy.setBuy(getBuy(cursor.getInt(0)));
