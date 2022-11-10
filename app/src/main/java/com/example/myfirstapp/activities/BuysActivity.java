@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.model.Buy;
 import com.example.myfirstapp.persistence.MovilesDataBase;
 import com.example.myfirstapp.utils.BuyListAdapter;
 
@@ -27,14 +28,19 @@ public class BuysActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerBuy);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(buyListAdapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         buyListAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent detailBuyIntent = new Intent(BuysActivity.this, DetailBuyActivity.class);
                 TextView txtId = view.findViewById(R.id.txtId);
-                detailBuyIntent.putExtra("idBuy", txtId.getText().toString());
+                TextView txtDate = view.findViewById(R.id.txtDate);
+                TextView txtTotal = view.findViewById(R.id.txtTotal);
+                Buy buy = new Buy();
+                buy.setIdBuy(Integer.valueOf(txtId.getText().toString().substring(4)));
+                buy.setIdDate(txtDate.getText().toString());
+                buy.setTotal(Double.valueOf(txtTotal.getText().toString().substring(2)));
+                Intent detailBuyIntent = new Intent(BuysActivity.this, DetailBuyActivity.class);
+                detailBuyIntent.putExtra("buy", buy);
                 startActivity(detailBuyIntent);
             }
         });

@@ -1,6 +1,8 @@
 package com.example.myfirstapp.model;
 
-public class Buy {
+import java.io.Serializable;
+
+public class Buy implements Serializable {
     private Integer idBuy;
     private String idDate;
     private Double discount;

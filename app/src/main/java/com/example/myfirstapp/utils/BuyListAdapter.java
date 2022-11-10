@@ -25,7 +25,7 @@ public class BuyListAdapter extends RecyclerView.Adapter<BuyPalleteViewHolder> i
     @NonNull
     @Override
     public BuyPalleteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_buy, parent, false);
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_buy, parent, false);
         row.setOnClickListener(this);
         return new BuyPalleteViewHolder(row);
     }
@@ -33,9 +33,9 @@ public class BuyListAdapter extends RecyclerView.Adapter<BuyPalleteViewHolder> i
     @Override
     public void onBindViewHolder(@NonNull BuyPalleteViewHolder holder, int position) {
         Buy buy = data.get(position);
-        holder.getTxtId().setText(buy.getIdBuy().toString());
+        holder.getTxtId().setText("ID: " + buy.getIdBuy().toString());
         holder.getTxtDate().setText(buy.getIdDate());
-        holder.getTxtTotal().setText(buy.getTotal().toString());
+        holder.getTxtTotal().setText("$" + buy.getTotal().toString());
     }
 
     @Override

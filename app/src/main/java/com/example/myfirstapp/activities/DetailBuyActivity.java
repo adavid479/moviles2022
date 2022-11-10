@@ -1,6 +1,7 @@
 package com.example.myfirstapp.activities;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.model.Buy;
 import com.example.myfirstapp.model.DetailBuy;
 import com.example.myfirstapp.persistence.MovilesDataBase;
 import com.example.myfirstapp.utils.DetailBuyListAdapter;
@@ -26,17 +28,21 @@ public class DetailBuyActivity extends AppCompatActivity {
 
         movilesDataBase = new MovilesDataBase(this);
 
-        String idBuy = null;
+        Buy buy = null;
         savedInstanceState = getIntent().getExtras();
         if(savedInstanceState!=null){
-            idBuy = savedInstanceState.getString("idBuy");
+            buy = (Buy) savedInstanceState.get("buy");
         }
 
-        System.out.println(idBuy);
+        TextView txtId = findViewById(R.id.txtId);
+        TextView txtDate = findViewById(R.id.txtDate);
+        TextView txtTotal = findViewById(R.id.txtTotal);
 
-        idBuy = String.valueOf(idBuy);
+        txtId.setText("Numero de compra: " + buy.getIdBuy().toString());
+        txtDate.setText("Fecha: " + buy.getIdDate());
+        txtTotal.setText("Total: $" + buy.getTotal().toString());
 
-        detailBuys = movilesDataBase.getDetailBuys(idBuy);
+        detailBuys = movilesDataBase.getDetailBuys(buy.getIdBuy().toString());
 
         DetailBuyListAdapter detailBuyListAdapter = new DetailBuyListAdapter(detailBuys);
         RecyclerView recyclerView = findViewById(R.id.recyclerDetailBuy);

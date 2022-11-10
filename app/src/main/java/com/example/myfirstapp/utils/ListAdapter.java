@@ -30,7 +30,7 @@ public class ListAdapter extends RecyclerView.Adapter<PalleteViewHolder> impleme
     @NonNull
     @Override
     public PalleteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_product, parent, false);
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_product, parent, false);
         row.setOnClickListener(this);
 
         preferencesCartUtils = new PreferencesUtils(parent.getContext(), PreferencesUtils.PREFS_NAME_CART);
@@ -41,7 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<PalleteViewHolder> impleme
     @Override
     public void onBindViewHolder(@NonNull PalleteViewHolder holder, int position) {
         Product product = data.get(position);
-        holder.getTxtIdProduct().setText(product.getId());
+        //holder.getTxtIdProduct().setText(product.getId());
         holder.getTxtNameProduct().setText(product.getName());
         holder.getTxtPriceProduct().setText(product.getPrice().toString());
         holder.getBtnAddToCart().setOnClickListener(new View.OnClickListener() {

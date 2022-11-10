@@ -43,7 +43,7 @@ public class LogInActivity extends AppCompatActivity{
                 user.setPassword(txtPassword.getText().toString());
 
                 if(user.getIdUser().equals(userReg.getIdUser()) && user.getPassword().equals(userReg.getPassword())){
-                    Intent homeIntent = new Intent(LogInActivity.this, HomeActivity.class);
+                    Intent homeIntent = new Intent(LogInActivity.this, DrawerActivity.class);
                     //homeIntent.putExtra("user", txtUser.getText());
                     //homeIntent.putExtra("pwd", txtPassword.getText());
                     //homeIntent.putExtra("user", user);

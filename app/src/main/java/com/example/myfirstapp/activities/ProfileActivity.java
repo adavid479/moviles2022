@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView txtPassword = findViewById(R.id.txtPassword);
         TextView txtEmail = findViewById(R.id.txtEmail);
         Button btnChangePwd = findViewById(R.id.btnChangePwd);
+        ImageButton imgBtnUser = findViewById(R.id.imgBtnUser);
 
         txtUser.setText("Usuario: " + user.getIdUser());
         txtPassword.setText("Contrasena: " + user.getPassword());
@@ -41,6 +43,14 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentChangePwd = new Intent(ProfileActivity.this, ChangePwdActivity.class);
                 startActivity(intentChangePwd);
+            }
+        });
+
+        imgBtnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent photoIntent = new Intent(ProfileActivity.this, PhotoActivity.class);
+                startActivity(photoIntent);
             }
         });
     }
