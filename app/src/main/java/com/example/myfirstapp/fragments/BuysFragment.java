@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.fragments;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.persistence.MovilesDataBase;
 import com.example.myfirstapp.utils.BuyListAdapter;
 

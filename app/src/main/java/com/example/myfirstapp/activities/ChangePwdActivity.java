@@ -21,6 +21,7 @@ public class ChangePwdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pwd);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         preferencesUtils = new PreferencesUtils(this.getApplicationContext(), PreferencesUtils.PREFS_NAME_GRAL);
         user = preferencesUtils.getUser();

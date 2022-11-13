@@ -24,7 +24,12 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/buysFragment"
-        android:name="com.example.myfirstapp.BuysFragment"
+        android:name="com.example.myfirstapp.fragments.BuysFragment"
         android:label="Mis compras"
         tools:layout="@layout/fragment_buys" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.myfirstapp.fragments.ProductsFragment"
+        android:label="Productos"
+        tools:layout="@layout/fragment_products" />
 </navigation>

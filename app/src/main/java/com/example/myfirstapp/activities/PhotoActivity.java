@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,11 @@ import com.example.myfirstapp.BuildConfig;
 import com.example.myfirstapp.R;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class PhotoActivity extends AppCompatActivity {
 
@@ -38,11 +43,13 @@ public class PhotoActivity extends AppCompatActivity {
     private String path;
     File imgFile;
     //Bitmap bitmap;
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgUser = findViewById(R.id.imgUser);
         btnSelectImg = findViewById(R.id.btnSelectImg);
         btnSelectImg.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +60,13 @@ public class PhotoActivity extends AppCompatActivity {
         });
         Bitmap bitmap = BitmapFactory.decodeFile(getExternalFilesDir(Environment.DIRECTORY_PICTURES)+ "/user.jpg");
         imgUser.setImageBitmap(bitmap);
+        Button btnSave = findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveImage();
+            }
+        });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -65,7 +79,7 @@ public class PhotoActivity extends AppCompatActivity {
                     imgUser.setImageBitmap(imgBitmap);
                     break;
                 case COD_SELECT:
-                    Uri uri = data.getData();
+                    uri = data.getData();
                     imgUser.setImageURI(uri);
                     break;
             }
@@ -148,6 +162,24 @@ public class PhotoActivity extends AppCompatActivity {
             cursor.close();
         }
         return result;
+    }
+
+    private void saveImage(){
+        int bufferSize = 1024;
+        try{
+            InputStream input = getContentResolver().openInputStream(uri);
+            File storagePath = Environment.getExternalStorageDirectory();
+            OutputStream output = new FileOutputStream(getExternalFilesDir(Environment.DIRECTORY_PICTURES) + "/user.jpg");
+            byte[] buffer = new byte[bufferSize];
+            int bytesRead = 0;
+            while((bytesRead = input.read(buffer, 0, buffer.length)) >= 0){
+                output.write(buffer, 0, bytesRead);
+            }
+            output.close();
+            input.close();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
