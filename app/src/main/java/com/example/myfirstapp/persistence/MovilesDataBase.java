@@ -183,4 +183,8 @@ public class MovilesDataBase extends SQLiteOpenHelper {
                 "FOREIGN KEY(idBuy) REFERENCES Buy(idBuy), " +
                 "FOREIGN KEY(idProduct) REFERENCES Product(idProduct))");
     }
+
+    public void clearProducts(){
+        this.getWritableDatabase().execSQL("DELETE FROM Product");
+    }
 }

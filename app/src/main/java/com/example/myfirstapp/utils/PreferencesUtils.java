@@ -65,4 +65,8 @@ public class PreferencesUtils {
         sharedPreferences.edit().remove(idProduct);
     }
 
+    public void emptyCart(){
+        sharedPreferences.edit().clear().apply();
+    }
+
 }

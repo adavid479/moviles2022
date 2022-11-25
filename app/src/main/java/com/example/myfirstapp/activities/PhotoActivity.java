@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.core.content.FileProvider;
 
 import com.example.myfirstapp.BuildConfig;
@@ -50,6 +52,7 @@ public class PhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         imgUser = findViewById(R.id.imgUser);
         btnSelectImg = findViewById(R.id.btnSelectImg);
         btnSelectImg.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +183,17 @@ public class PhotoActivity extends AppCompatActivity {
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                PhotoActivity.super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

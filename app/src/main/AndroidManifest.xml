@@ -9,6 +9,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -40,18 +42,15 @@
         <activity android:name=".activities.RecyclerActivity" />
         <activity android:name=".activities.AcelerometerActivity" />
         <activity android:name=".activities.RecoveryActivity" />
-        <activity android:name=".activities.ProfileActivity"
-            android:parentActivityName=".activities.DrawerActivity"/>
-        <activity android:name=".activities.ChangePwdActivity"
-            android:parentActivityName=".activities.ProfileActivity"/>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.ChangePwdActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.DetailProductActivity" />
         <activity android:name=".activities.CartActivity" />
         <activity android:name=".activities.AddProductActivity" />
         <activity android:name=".activities.BuysActivity" />
         <activity android:name=".activities.DetailBuyActivity" />
-        <activity android:name=".activities.PhotoActivity"
-            android:parentActivityName=".activities.ProfileActivity"/>
+        <activity android:name=".activities.PhotoActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

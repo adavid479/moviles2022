@@ -1,10 +1,12 @@
 package com.example.myfirstapp.activities;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +34,7 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         cartProducts = new ArrayList<CartProduct>();
         movilesDataBase = new MovilesDataBase(getApplicationContext());
@@ -89,5 +92,16 @@ public class CartActivity extends AppCompatActivity {
             //System.out.println(entry.getKey() + " " + entry.getValue());
             cartProducts.add(new CartProduct(movilesDataBase.getProduct(entry.getKey()), Integer.valueOf(entry.getValue().toString())));
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                CartActivity.super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
